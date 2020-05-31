@@ -4,7 +4,7 @@ int key_pressed(void);
 void enable_raw_mode();
 void key_process(int ch);
 
-int flags_key;
+extern int flags_key;
 
 #define FLAG_PULSADOR_P1 0x01
 #define FLAG_PULSADOR_P2 0x02

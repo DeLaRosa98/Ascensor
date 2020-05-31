@@ -4,7 +4,7 @@
 #include "freertos/task.h"
 #include "fsm.h"
 #include "ascensor.h"
-int flags_key;
+
 
 static void lampara_principal(void *ignore)
 {
@@ -25,20 +25,8 @@ static void lampara_principal(void *ignore)
         {
             key_process(getchar());
         }
-        switch (frame)
-        {
-        case  0:
-            fsm_fire(ascensor_fsm);
-            break;
-        case  1:
-        
-            break;
-        case  2:
-      
-            break;
-        }
-      frame =(frame+1)%4;
-        vTaskDelayUntil(&last, period);
+       fsm_fire(ascensor_fsm);
+               vTaskDelayUntil(&last, period);
     }
 }
 
