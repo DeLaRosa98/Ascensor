@@ -12,13 +12,14 @@ static void lampara_principal(void *ignore)
 
     fsm_t *ascensor_fsm = fsm_new_lampara();
    
-    portTickType period = 20 / portTICK_RATE_MS;
+    portTickType period = 100 / portTICK_RATE_MS;
     portTickType last = xTaskGetTickCount();
 
     // Para poder usar el terminal correctamnte
     enable_raw_mode();
 
-    
+    // Hay una unica frame de un hiperperido de  100 ms primero se leen las entradas que no tarda 
+    // y luego el coste máximo será 30 de fire por tanto cumple plazo
     while (1)
     {
         if (key_pressed())
@@ -26,7 +27,7 @@ static void lampara_principal(void *ignore)
             key_process(getchar());
         }
        fsm_fire(ascensor_fsm);
-               vTaskDelayUntil(&last, period);
+        vTaskDelayUntil(&last, period);
     }
 }
 

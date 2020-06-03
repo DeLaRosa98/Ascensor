@@ -45,10 +45,6 @@ static int sensor_1(fsm_t *fsm)
 
     return  (flags_key & FLAG_SENSOR_A1);
 }
-static int tiempo_inactivo(fsm_t *fsm)
-{
-    return (now + deadline_perid) < xTaskGetTickCount();
-}
 static void subir_ext_2(fsm_t *fsm)
 {
     (flags_key &= ~FLAG_PULSADOR_P2);
